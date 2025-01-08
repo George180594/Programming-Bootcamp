@@ -1,0 +1,16 @@
+/* 
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+} */
+body{
+    background-color: red;
+}
+h1{
+    color: aquamarine;
+ }
