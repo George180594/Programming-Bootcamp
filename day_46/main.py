@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-CLIENT_ID="26bdd976420b4c46961bb345568055da"
-CLIENT_SECRET="8a37a39c7d1847508976a120aa6033a0"
-SPOTIFY_DISPLAY_NAME="George Lucas Cunha Rezende"
+CLIENT_ID="CLIENT_ID"
+CLIENT_SECRET="CLIENT_SECRET"
+SPOTIFY_DISPLAY_NAME="user"
 ID_KEY="12148239057"
 
 
