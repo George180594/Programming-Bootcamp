@@ -1,0 +1,30 @@
+body {
+  background: #f5f7f9;
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+}
+
+.preview-section + .preview-section {
+  margin-top: 1.5rem;
+}
+
+h1, h2, h3 {
+  color: #1f2a37;
+}
+
+.form-control, .form-select {
+  border-radius: 10px;
+}
+
+.btn-success {
+  background-color: #1f7a4d;
+  border-color: #1f7a4d;
+}
+
+.btn-success:hover {
+  background-color: #16603c;
+  border-color: #16603c;
+}

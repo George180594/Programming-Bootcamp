@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Especialista | Relatório{% endblock %}
+
+{% block content %}
+<section class="card shadow-sm p-4">
+    <h1 class="h4 mb-3">Cadastro do especialista</h1>
+    <p class="text-muted">Primeira etapa: informe quem é o especialista responsável e sua área de atuação.</p>
+    <form method="post" novalidate>
+        {{ form.csrf_token }}
+        <div class="row g-3">
+            <div class="col-md-6">
+                {{ form.specialist_name.label(class="form-label") }}
+                {{ form.specialist_name(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.specialty.label(class="form-label") }}
+                {{ form.specialty(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.area.label(class="form-label") }}
+                {{ form.area(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.council_number.label(class="form-label") }}
+                {{ form.council_number(class="form-control") }}
+            </div>
+        </div>
+        <div class="mt-4 d-flex justify-content-end">
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+</section>
+{% endblock %}

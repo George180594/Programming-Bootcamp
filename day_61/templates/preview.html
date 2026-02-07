@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Prévia do relatório{% endblock %}
+
+{% block content %}
+<section class="card shadow-sm p-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-start mb-3">
+        <div>
+            <h1 class="h4">Prévia do relatório</h1>
+            <p class="text-muted mb-0">Revise os dados e gere o PDF final.</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary" href="{{ url_for('patient') }}">Editar</a>
+            <a class="btn btn-success" href="{{ url_for('pdf') }}">Baixar PDF</a>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2 class="h6">Especialista</h2>
+        <ul class="list-unstyled">
+            <li><strong>Nome:</strong> {{ specialist.specialist_name }}</li>
+            <li><strong>Especialidade:</strong> {{ specialist.specialty }}</li>
+            <li><strong>Área:</strong> {{ specialist.area }}</li>
+            <li><strong>Conselho:</strong> {{ specialist.council_number or '—' }}</li>
+        </ul>
+    </div>
+
+    <div class="preview-section">
+        <h2 class="h6">Paciente</h2>
+        <ul class="list-unstyled">
+            <li><strong>Nome:</strong> {{ patient.patient_name }}</li>
+            <li><strong>Nascimento:</strong> {{ patient.birth_date }} ({{ age }} anos)</li>
+            <li><strong>Responsáveis:</strong> {{ patient.responsible or '—' }}</li>
+        </ul>
+    </div>
+
+    <div class="preview-section">
+        <h2 class="h6">Seções do relatório</h2>
+        {% for title, content in sections %}
+            <div class="border rounded p-3 mb-3">
+                <h3 class="h6">{{ title }}</h3>
+                <p class="mb-0">{{ content | safe }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
