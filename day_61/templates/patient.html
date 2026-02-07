@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}Paciente | Relatório{% endblock %}
+
+{% block content %}
+<section class="card shadow-sm p-4">
+    <h1 class="h4 mb-3">Cadastro do paciente</h1>
+    <p class="text-muted">Segunda etapa: preencha a identificação do paciente e as etapas do relatório.</p>
+    <form method="post" novalidate>
+        {{ form.csrf_token }}
+        <h2 class="h6 mt-4">1. Identificação</h2>
+        <div class="row g-3">
+            <div class="col-md-6">
+                {{ form.patient_name.label(class="form-label") }}
+                {{ form.patient_name(class="form-control") }}
+            </div>
+            <div class="col-md-3">
+                {{ form.birth_date.label(class="form-label") }}
+                {{ form.birth_date(class="form-control", type="date") }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Ano atual</label>
+                <input class="form-control" type="text" value="{{ current_year }}" readonly>
+            </div>
+            <div class="col-md-6">
+                {{ form.father_name.label(class="form-label") }}
+                {{ form.father_name(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.mother_name.label(class="form-label") }}
+                {{ form.mother_name(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.responsible.label(class="form-label") }}
+                {{ form.responsible(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.diagnosis.label(class="form-label") }}
+                {{ form.diagnosis(class="form-control") }}
+            </div>
+            <div class="col-md-12">
+                {{ form.purpose.label(class="form-label") }}
+                {{ form.purpose(class="form-control") }}
+            </div>
+            <div class="col-md-12">
+                {{ form.cid_list.label(class="form-label") }}
+                {{ form.cid_list(class="form-control", rows="3") }}
+                <div class="form-text">Liste o CID com número e nome.</div>
+            </div>
+            <div class="col-md-12">
+                {{ form.tests_done.label(class="form-label") }}
+                {{ form.tests_done(class="form-select", multiple=true) }}
+            </div>
+            <div class="col-md-12">
+                {{ form.exams_done.label(class="form-label") }}
+                {{ form.exams_done(class="form-control", rows="3") }}
+            </div>
+        </div>
+
+        <h2 class="h6 mt-4">2. Descrição da demanda</h2>
+        {{ form.demand_description(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">3. Procedimento</h2>
+        {{ form.procedure_description(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">4. Análise</h2>
+        {{ form.analysis_overview(class="form-control", rows="3") }}
+
+        <div class="border rounded p-3 mt-3">
+            <h3 class="h6">Cadastro de método</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    {{ form.method_exam.label(class="form-label") }}
+                    {{ form.method_exam(class="form-control") }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.method_methodology.label(class="form-label") }}
+                    {{ form.method_methodology(class="form-control") }}
+                </div>
+                <div class="col-12">
+                    {{ form.method_parameters.label(class="form-label") }}
+                    {{ form.method_parameters(class="form-control", rows="2") }}
+                </div>
+            </div>
+        </div>
+
+        <h2 class="h6 mt-4">4.1 Reavaliação</h2>
+        {{ form.reevaluation(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">4.2 Gráficos de desempenho</h2>
+        {{ form.performance_graphs(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">4.3 Observações durante a intervenção</h2>
+        {{ form.observations(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">Objetivos</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                {{ form.objectives_short.label(class="form-label") }}
+                {{ form.objectives_short(class="form-control") }}
+            </div>
+            <div class="col-md-4">
+                {{ form.objectives_medium.label(class="form-label") }}
+                {{ form.objectives_medium(class="form-control") }}
+            </div>
+            <div class="col-md-4">
+                {{ form.objectives_long.label(class="form-label") }}
+                {{ form.objectives_long(class="form-control") }}
+            </div>
+        </div>
+
+        <h2 class="h6 mt-4">Score final e evolução</h2>
+        {{ form.score_final(class="form-control", rows="2") }}
+
+        <h2 class="h6 mt-4">Evolução</h2>
+        {{ form.evolution(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">5. Conclusão</h2>
+        <div class="row g-3">
+            <div class="col-md-12">
+                {{ form.conclusion_summary.label(class="form-label") }}
+                {{ form.conclusion_summary(class="form-control", rows="3") }}
+            </div>
+            <div class="col-md-12">
+                {{ form.clinical_report.label(class="form-label") }}
+                {{ form.clinical_report(class="form-control", rows="3") }}
+            </div>
+            <div class="col-md-12">
+                {{ form.history.label(class="form-label") }}
+                {{ form.history(class="form-control", rows="3") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.positives.label(class="form-label") }}
+                {{ form.positives(class="form-control", rows="3") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.difficulties.label(class="form-label") }}
+                {{ form.difficulties(class="form-control", rows="3") }}
+            </div>
+        </div>
+
+        <h2 class="h6 mt-4">Plano de intervenção</h2>
+        {{ form.intervention_plan(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">Encaminhamentos</h2>
+        {{ form.referrals(class="form-control", rows="3") }}
+
+        <h2 class="h6 mt-4">Fecho</h2>
+        {{ form.closing(class="form-control", rows="2") }}
+
+        <div class="mt-4 d-flex justify-content-between">
+            <a class="btn btn-outline-secondary" href="{{ url_for('specialist') }}">Voltar</a>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+</section>
+{% endblock %}
